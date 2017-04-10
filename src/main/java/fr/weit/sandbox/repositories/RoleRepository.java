@@ -1,7 +1,7 @@
 package fr.weit.sandbox.repositories;
 
+import fr.weit.sandbox.models.Role;
 import fr.weit.sandbox.models.User;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,11 +11,9 @@ import java.util.List;
  * Created by fel on 05/03/2017.
  */
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface RoleRepository extends CrudRepository<Role, Long> {
 
-    User getByName(String name);
-
-    List<User> findByName(String name);
+   // Role getByRoleName(Role.RoleName roleName);
 
 //    @Query(value = "SELECT count(u) from UserModel u where u.email is null")
 //    Long errors();

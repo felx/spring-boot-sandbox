@@ -9,10 +9,11 @@ import lombok.experimental.Accessors;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 /**
- * Created by fel on 03/03/2017.
+ * Created by fel on 11/04/2017.
  */
 
 @Entity
@@ -21,15 +22,23 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserModel {
+
+public class UserRole {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String name;
-    private LocalDateTime dateOfBirth;
+    @ManyToOne
+    private User user;
+    @ManyToOne
+    private Role role;
 
 
-    private String email;
+
+    private Boolean activated;
+    private String lastModifiedBy;
+    private LocalDateTime lastModified;
+
+
 }
