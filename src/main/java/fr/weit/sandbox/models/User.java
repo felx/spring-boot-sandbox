@@ -1,15 +1,11 @@
 package fr.weit.sandbox.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -17,7 +13,8 @@ import java.util.Set;
  */
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @Accessors(chain = true)
 @NoArgsConstructor
@@ -36,7 +33,8 @@ public class User {
 
     private Boolean activated;
 
-    @OneToMany(cascade = CascadeType.PERSIST,targetEntity = UserRole.class,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.PERSIST, targetEntity = UserRole.class, mappedBy = "user")
+    @JsonBackReference
     private Set<UserRole> userRoles;
 
 }

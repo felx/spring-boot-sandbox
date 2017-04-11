@@ -1,9 +1,7 @@
 package fr.weit.sandbox.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -14,7 +12,8 @@ import java.time.LocalDateTime;
  */
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @Accessors(chain = true)
 @NoArgsConstructor
@@ -26,9 +25,12 @@ public class UserRole {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(optional = false,fetch = FetchType.EAGER)
+    @JsonManagedReference
     private User user;
-    @ManyToOne
+
+    @ManyToOne(optional = false,fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Role role;
 
 

@@ -1,9 +1,7 @@
 package fr.weit.sandbox.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -15,11 +13,13 @@ import java.util.Set;
  */
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Role {
 
     @Id
@@ -33,5 +33,6 @@ public class Role {
     }
 
     @OneToMany(cascade = CascadeType.PERSIST, targetEntity = UserRole.class,mappedBy = "role")
+    @JsonBackReference
     private Set<UserRole> userRole;
 }
