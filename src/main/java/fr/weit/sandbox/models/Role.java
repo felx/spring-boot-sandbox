@@ -32,6 +32,6 @@ public class Role {
         ADMIN,USER;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = UserRole.class,fetch = FetchType.LAZY,mappedBy = "role")
+    @OneToMany(cascade = CascadeType.PERSIST, targetEntity = UserRole.class,mappedBy = "role")
     private Set<UserRole> userRole;
 }

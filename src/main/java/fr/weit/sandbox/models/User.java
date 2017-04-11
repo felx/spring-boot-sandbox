@@ -36,7 +36,7 @@ public class User {
 
     private Boolean activated;
 
-    @OneToMany(cascade = CascadeType.ALL,targetEntity = UserRole.class,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.PERSIST,targetEntity = UserRole.class,mappedBy = "user")
     private Set<UserRole> userRoles;
 
 }
